@@ -7,9 +7,6 @@ spec:
   releaseName: traefik
   targetNamespace: kube-system
   timeout: 300
-  resetValues: false
-  wait: false
-  forceUpgrade: false
   chart:
     repository: https://helm.traefik.io/traefik
     name: traefik
