@@ -1,0 +1,36 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  releaseName: traefik
+  targetNamespace: kube-system
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://helm.traefik.io/traefik
+    name: traefik
+  values:
+    rbac:
+      enabled: "true"
+    ssl:
+      enabled: "true"
+    metrics:
+      prometheus:
+        enabled: "true"
+    kubernetes:
+    namespaces:
+      - default
+      - kube-system
+      - home
+      - monitoring
+    ingressEndpoint:
+      useDefaultPublishedService: "true"
+    image:
+      name: "rancher/library-traefik"
+    dashboard:
+      enabled: "true"
+      domain: "traefik.local"

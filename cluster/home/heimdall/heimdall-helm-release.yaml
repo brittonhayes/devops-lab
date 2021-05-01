@@ -1,0 +1,18 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: heimdall
+  namespace: home
+spec:
+  releaseName: heimdall
+  targetNamespace: home
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://k8s-at-home.com/charts/
+    name: heimdall
+  values:
+    environment:
+      TZ: "America/Los Angeles"
