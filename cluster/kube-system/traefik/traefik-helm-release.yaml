@@ -7,6 +7,7 @@ spec:
   releaseName: traefik
   targetNamespace: kube-system
   timeout: 300
+  interval: 30
   chart:
     repository: https://helm.traefik.io/traefik
     name: traefik
