@@ -6,11 +6,14 @@ metadata:
 spec:
   releaseName: adguard
   targetNamespace: home
-  timeout: 300
-  interval: 30
+  interval: 5m
   chart:
-    repository: https://k8s-at-home.com/charts/
-    name: adguard-home
+    spec:
+      chart: adguard-home
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namepace: home
   values:
     annotations:
       kubernetes.io/ingress.class: traefik

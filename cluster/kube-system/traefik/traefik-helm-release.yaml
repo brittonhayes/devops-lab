@@ -6,11 +6,14 @@ metadata:
 spec:
   releaseName: traefik
   targetNamespace: kube-system
-  timeout: 300
-  interval: 30
+  interval: 5m
   chart:
-    repository: https://helm.traefik.io/traefik
-    name: traefik
+    spec:
+      chart: traefik
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: kube-system
   values:
     rbac:
       enabled: "true"
