@@ -1,16 +1,16 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: adguard-ui
-  namespace: home
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`adguard.local`)
-      kind: Rule
-      services:
-        - kind: Service
-          name: adguard-adguard-home
-          namespace: home
-          port: 3000
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: adguard-ui
+#   namespace: home
+# spec:
+#   entryPoints:
+#     - web
+#   routes:
+#     - match: Host(`adguard.local`)
+#       kind: Rule
+#       services:
+#         - kind: Service
+#           name: adguard-adguard-home
+#           namespace: home
+#           port: 3000
