@@ -1,4 +1,7 @@
 extends: relaxed
 
+ignore: |
+  gotk-components.yaml
+
 rules:
   comments-indentation: disable  # don't bother me with this rule

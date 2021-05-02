@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: check
+    silent: true
+
+  check:
+    desc: Run pre-commit checks
+    cmds:
+      - pre-commit run
+
+  lint:
+    desc: Lint YAML files
+    cmds:
+      - yamllint cluster/**/*.yaml

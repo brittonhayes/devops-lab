@@ -10,9 +10,12 @@ spec:
   chart:
     spec:
       chart: heimdall
+      version: v6.3.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
   values:
     environment:
       TZ: "America/Los Angeles"
