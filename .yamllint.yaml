@@ -1,0 +1,7 @@
+# This is my first, very own configuration file for yamllint!
+# It extends the default conf by adjusting some options.
+
+extends: relaxed
+
+rules:
+  comments-indentation: disable  # don't bother me with this rule
