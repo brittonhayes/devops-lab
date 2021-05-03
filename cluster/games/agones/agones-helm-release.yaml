@@ -10,7 +10,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: games
+      chart: agones
       version: v1.14.0-rc
       sourceRef:
         kind: HelmRepository
