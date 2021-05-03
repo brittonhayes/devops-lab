@@ -3,7 +3,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: adguard-ui
-  namespace: home
+  namespace: kube-system
 spec:
   entryPoints:
     - web
