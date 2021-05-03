@@ -3,9 +3,8 @@ extends: relaxed
 
 ignore: |
   gotk-components.yaml
+  .github/workflows/ci.yaml
 
 rules:
   comments-indentation: disable  # don't bother me with this rule
   line-length: disable
-  document-start:
-    present: true
