@@ -15,3 +15,8 @@ tasks:
     desc: Lint YAML files
     cmds:
       - yamllint cluster/**/*.yaml -c ./.yamllint.yaml
+
+  docs:
+    desc: Generate README
+    cmds:
+      - renderizer --settings ".README.yaml" templates/README.tmpl > README.md

@@ -1,0 +1,18 @@
+title: DevOps Lab
+desc: |
+  A kubernetes home lab deployed entirely with GitOps and defined in YAML.
+
+cluster_desc: |
+  All deployed applications are defined in the `cluster` directory. Each project is nested
+  into the folder that matches their namespace.
+
+cluster_content:
+  - "/default      :   A catch-all namespace"
+  - "/home         :   Home applications and services"
+  - "/games        :   Dedicated game servers"
+  - "/monitoring   :   Logging, monitoring, and dashboards"
+  - "/kube-system  :   Internal system services"
+  - "/flux-system  :   GitOps/Flux operator and services"
+
+infra_desc: |
+  The collection of helm repositories are defined in the `infrastructure` directory.

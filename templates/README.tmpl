@@ -1,0 +1,32 @@
+# {{.title}}
+
+> {{.desc}}
+
+## The Cluster
+
+{{ .cluster_desc}}
+
+```yaml
+cluster/:
+  namespace/:
+    project/:
+      - project_resource.yaml
+```
+
+```text
+|-- /cluster
+{{- range .cluster_content }}
+|---- {{.}}
+{{- end}}
+```
+
+## The Infrastructure
+
+{{.infra_desc}}
+
+```yaml
+infrastructure/:
+  - kustomization.yaml
+  sources/:
+    - source.yaml
+```
