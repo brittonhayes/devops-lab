@@ -1,8 +1,11 @@
-title: DevOps Lab
+title: DevOps Lab 🧪
 desc: |
   A Kubernetes home lab deployed entirely with GitOps and defined in YAML.
 
-image: "https://avatars.githubusercontent.com/u/52158677?s=280&v=4"
+images:
+  - "https://cncf-branding.netlify.app/img/projects/helm/stacked/color/helm-stacked-color.png"
+  - "https://info.container-solutions.com/hs-fs/hubfs/GITOPS_icon.png?width=628&height=628&name=GITOPS_icon.png"
+  - "https://sdtimes.com/wp-content/uploads/2017/01/0118.sdt-kubernetes.png"
 
 cluster_desc: |
   All deployed applications are defined in the `cluster` directory. Each project is nested

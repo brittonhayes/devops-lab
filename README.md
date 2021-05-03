@@ -1,6 +1,8 @@
-# DevOps Lab
+<h1 align="center">DevOps Lab 🧪</h1>
 
-<image width="500px" alt="logo" src="https://avatars.githubusercontent.com/u/52158677?s=280&v=4"></image>
+<p align="center">
+<image width="84px" alt="logo" src="https://cncf-branding.netlify.app/img/projects/helm/stacked/color/helm-stacked-color.png"></image><image width="84px" alt="logo" src="https://info.container-solutions.com/hs-fs/hubfs/GITOPS_icon.png?width=628&height=628&name=GITOPS_icon.png"></image><image width="84px" alt="logo" src="https://sdtimes.com/wp-content/uploads/2017/01/0118.sdt-kubernetes.png"></image>
+</p>
 
 > A Kubernetes home lab deployed entirely with GitOps and defined in YAML.
 

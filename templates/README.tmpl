@@ -1,6 +1,10 @@
-# {{.title}}
+<h1 align="center">{{.title}}</h1>
 
-<image width="500px" alt="logo" src="{{.image}}"></image>
+<p align="center">
+{{ range .images -}}
+<image width="84px" alt="logo" src="{{.}}"></image>
+{{- end }}
+</p>
 
 > {{.desc}}
 
