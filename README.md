@@ -1,6 +1,8 @@
 # DevOps Lab
 
-> A kubernetes home lab deployed entirely with GitOps and defined in YAML.
+<image width="500px" alt="logo" src="https://avatars.githubusercontent.com/u/52158677?s=280&v=4"></image>
+
+> A Kubernetes home lab deployed entirely with GitOps and defined in YAML.
 
 
 ## The Cluster

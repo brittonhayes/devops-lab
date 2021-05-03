@@ -1,6 +1,8 @@
 title: DevOps Lab
 desc: |
-  A kubernetes home lab deployed entirely with GitOps and defined in YAML.
+  A Kubernetes home lab deployed entirely with GitOps and defined in YAML.
+
+image: "https://avatars.githubusercontent.com/u/52158677?s=280&v=4"
 
 cluster_desc: |
   All deployed applications are defined in the `cluster` directory. Each project is nested
