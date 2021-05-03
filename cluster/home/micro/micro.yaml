@@ -35,5 +35,5 @@ spec:
       services:
         - kind: Service
           name: micro
-          namespace: home
+          namespace: micro
           port: 443
