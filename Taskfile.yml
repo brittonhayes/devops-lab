@@ -14,4 +14,4 @@ tasks:
   lint:
     desc: Lint YAML files
     cmds:
-      - yamllint cluster/**/*.yaml
+      - yamllint cluster/**/*.yaml -c ./.yamllint.yaml
