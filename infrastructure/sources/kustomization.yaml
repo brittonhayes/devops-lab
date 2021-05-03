@@ -7,3 +7,4 @@ resources:
   - k8s-at-home.yaml
   - agones.yaml
   - bitnami.yaml
+  - micro.yaml
