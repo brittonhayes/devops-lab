@@ -1,0 +1,39 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubernetes-dashboard
+  namespace: monitoring
+spec:
+  releaseName: kubernetes-dashboard
+  targetNamespace: monitoring
+  interval: 5m
+  chart:
+    spec:
+      chart: kubernetes-dashboard
+      version: v4.0.3
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-dashboard
+        namespace: flux-system
+      interval: 5m
+  values:
+    annotations:
+      kubernetes.io/ingress.class: traefik
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kubernetes-ui
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`k8s.local`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: kubernetes-dashboard
+          namespace: monitoring
+          port: 9090

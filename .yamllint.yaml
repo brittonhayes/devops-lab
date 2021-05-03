@@ -1,3 +1,4 @@
+---
 extends: relaxed
 
 ignore: |
@@ -6,3 +7,5 @@ ignore: |
 rules:
   comments-indentation: disable  # don't bother me with this rule
   line-length: disable
+  document-start:
+    present: true
