@@ -5,3 +5,4 @@ namespace: flux-system
 resources:
   - traefik.yaml
   - k8s-at-home.yaml
+  - agones.yaml
