@@ -13,11 +13,13 @@ cluster_desc: |
 
 cluster_content:
   - "/default      :   A catch-all namespace"
+  - "/dev          :   Development tools"
   - "/home         :   Home applications and services"
   - "/games        :   Dedicated game servers"
   - "/monitoring   :   Logging, monitoring, and dashboards"
   - "/kube-system  :   Internal system services"
   - "/flux-system  :   GitOps/Flux operator and services"
+  - "/openfaas     :   Open faas serverless resources"
 
 infra_desc: |
   The collection of helm repositories are defined in the `infrastructure` directory.
