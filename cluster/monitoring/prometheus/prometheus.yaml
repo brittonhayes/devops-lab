@@ -17,3 +17,20 @@ spec:
         name: prometheus-community
         namespace: flux-system
       interval: 5m
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-dashboard
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`prometheus.local`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: prometheus-grafana
+          namespace: monitoring
+          port: 80
