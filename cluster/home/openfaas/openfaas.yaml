@@ -36,6 +36,6 @@ spec:
       kind: Rule
       services:
         - kind: Service
-          name: openfaas
+          name: gateway-external
           namespace: home
           port: 8080
