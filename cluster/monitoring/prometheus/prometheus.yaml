@@ -5,7 +5,7 @@ metadata:
   name: prometheus
   namespace: home
 spec:
-  releaseName: prometheus
+  releaseName: kube-prometheus-stack
   targetNamespace: home
   interval: 5m
   chart:
