@@ -8,3 +8,4 @@ resources:
   - agones.yaml
   - bitnami.yaml
   - micro.yaml
+  - prometheus.yaml
