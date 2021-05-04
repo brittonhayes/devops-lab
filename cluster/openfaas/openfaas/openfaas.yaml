@@ -3,10 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: openfaas
-  namespace: openfaas
+  namespace: home
 spec:
   releaseName: openfaas
-  targetNamespace: openfaas
+  targetNamespace: home
   interval: 5m
   chart:
     spec:
@@ -20,7 +20,7 @@ spec:
   values:
     annotations:
       kubernetes.io/ingress.class: traefik
-    functionNamespace: openfaas-fn
+    functionNamespace: home
     generateBasicAuth: true
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -37,5 +37,5 @@ spec:
       services:
         - kind: Service
           name: gateway-external
-          namespace: openfaas
+          namespace: home
           port: 8080

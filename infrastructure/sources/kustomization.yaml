@@ -10,4 +10,3 @@ resources:
   - micro.yaml
   - prometheus.yaml
   - open-faas.yaml
-  - jupyterhub.yaml
