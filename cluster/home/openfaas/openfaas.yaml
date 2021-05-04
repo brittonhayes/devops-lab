@@ -1,0 +1,41 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: openfaas
+  namespace: home
+spec:
+  releaseName: openfaas
+  targetNamespace: home
+  interval: 5m
+  chart:
+    spec:
+      chart: openfaas
+      version: v3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: openfaas
+        namespace: flux-system
+      interval: 5m
+  values:
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    functionNamespace: home
+    generateBasicAuth: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openfaas-ui
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`openfaas.lan`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: openfaas
+          namespace: home
+          port: 8080

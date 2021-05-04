@@ -9,3 +9,4 @@ resources:
   - bitnami.yaml
   - micro.yaml
   - prometheus.yaml
+  - open-faas.yaml
