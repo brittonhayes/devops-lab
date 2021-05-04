@@ -27,7 +27,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`prometheus.local`)
+    - match: Host(`prometheus.lan`)
       kind: Rule
       services:
         - kind: Service

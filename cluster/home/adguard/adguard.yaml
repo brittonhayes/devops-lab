@@ -30,7 +30,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`adguard.local`)
+    - match: Host(`adguard.lan`)
       kind: Rule
       services:
         - kind: Service

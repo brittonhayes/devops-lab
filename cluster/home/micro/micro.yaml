@@ -30,7 +30,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`micro.local`)
+    - match: Host(`micro.lan`)
       kind: Rule
       services:
         - kind: Service

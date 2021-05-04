@@ -37,7 +37,7 @@ spec:
       name: "rancher/library-traefik"
     dashboard:
       enabled: "true"
-      domain: "traefik.local"
+      domain: "traefik.lan"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -48,7 +48,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`traefik.local`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.lan`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       services:
         - name: api@internal
