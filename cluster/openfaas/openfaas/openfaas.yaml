@@ -20,7 +20,7 @@ spec:
   values:
     annotations:
       kubernetes.io/ingress.class: traefik
-    functionNamespace: openfaas
+    functionNamespace: openfaas-fn
     generateBasicAuth: true
 ---
 apiVersion: traefik.containo.us/v1alpha1
