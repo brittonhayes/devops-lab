@@ -29,7 +29,7 @@ cluster/:
 |---- /monitoring   :   Logging, monitoring, and dashboards
 |---- /kube-system  :   Internal system services
 |---- /flux-system  :   GitOps/Flux operator and services
-|---- /openfaas     :   Open faas serverless resources
+|---- /openfaas     :   Open faas serverless resources and functions
 ```
 
 ## The Infrastructure
