@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: micro
-  namespace: flux-system
+  namespace: micro
 spec:
   interval: 5m
   url: https://micro.github.io/helm
