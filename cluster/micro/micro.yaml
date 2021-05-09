@@ -3,10 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: micro
-  namespace: home
+  namespace: micro
 spec:
   releaseName: micro
-  targetNamespace: home
+  targetNamespace: micro
   interval: 5m
   chart:
     spec:
