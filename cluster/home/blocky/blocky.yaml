@@ -53,9 +53,7 @@ spec:
             - https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt
             - https://raw.githubusercontent.com/durablenapkin/scamblocklist/master/adguard.txt
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-            - https://mirror1.malwaredomains.com/files/justdomains
             - http://sysctl.org/cameleon/hosts
-            - https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
             - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
           special:
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
@@ -68,12 +66,6 @@ spec:
           # default will be used, if no special definition for a client name exists
           default:
             - ads
-            - special
-          # use client name (with wildcard support: * - sequence of any characters, [0-9] - range)
-          # or single ip address / client subnet as CIDR notation
-          laptop*:
-            - ads
-          192.168.178.1/24:
             - special
         # which response will be sent, if query is blocked:
         # zeroIp: 0.0.0.0 will be returned (default)
@@ -105,7 +97,7 @@ spec:
       # optional: configuration of client name resolution
       clientLookup:
         # optional: this DNS resolver will be used to perform reverse DNS lookup (typically local router)
-        upstream: udp:192.168.178.1
+        upstream: udp:192.168.1.1
         # optional: some routers return multiple names for client (host name and user defined name). Define which single name should be used.
         # Example: take second name if present, if not take first name
         singleNameOrder:
