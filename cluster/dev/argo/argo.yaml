@@ -28,12 +28,21 @@ metadata:
   namespace: kube-system
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`argo.lan`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`argocd.lan`)
+      priority: 10
       services:
-        - kind: Service
-          name: argo-cd-argocd-server
-          namespace: dev
+        - name: argocd-server
           port: 80
+    - kind: Rule
+      match: Host(`argocd.lan`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
+  tls:
+    certResolver: default
+    options: {}
