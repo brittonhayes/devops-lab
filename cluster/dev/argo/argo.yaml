@@ -2,25 +2,6 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: argo-workflows
-  namespace: dev
-spec:
-  releaseName: argo-workflows
-  targetNamespace: dev
-  interval: 5m
-  chart:
-    spec:
-      chart: argo
-      version: v0.16.10
-      sourceRef:
-        kind: HelmRepository
-        name: argo
-        namespace: flux-system
-      interval: 5m
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
   name: argo-cd
   namespace: dev
 spec:
@@ -36,20 +17,23 @@ spec:
         name: argo
         namespace: flux-system
       interval: 5m
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: argo-cd
-  namespace: kube-system
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`argo.lan`)
-      kind: Rule
-      services:
-        - kind: Service
-          name: argo-workflows-server
-          namespace: dev
-          port: 2746
+  values:
+    service:
+      type: LoadBalancer
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: argo-cd
+#   namespace: kube-system
+# spec:
+#   entryPoints:
+#     - web
+#   routes:
+#     - match: Host(`argo.lan`)
+#       kind: Rule
+#       services:
+#         - kind: Service
+#           name: argo-workflows-server
+#           namespace: dev
+#           port: 2746
