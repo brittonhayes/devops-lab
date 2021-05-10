@@ -17,3 +17,8 @@ spec:
         name: agones
         namespace: flux-system
       interval: 5m
+  values:
+    agones:
+      gameservers:
+        namespaces:
+          - games
