@@ -11,3 +11,4 @@ resources:
   - prometheus.yaml
   - open-faas.yaml
   - argo.yaml
+  - drone.yaml

@@ -2,44 +2,37 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: argo-cd
+  name: drone
   namespace: dev
 spec:
-  releaseName: argo-cd
+  releaseName: drone
   targetNamespace: dev
   interval: 5m
   chart:
     spec:
-      chart: argo-cd
+      chart: drone
       version: v3.2.2
       sourceRef:
         kind: HelmRepository
-        name: argo
+        name: drone
         namespace: flux-system
       interval: 5m
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argo-cd
+  name: drone
   namespace: kube-system
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - kind: Rule
-      match: Host(`argocd.lan`)
+      match: Host(`drone.lan`)
       priority: 10
       services:
-        - name: argo-cd-argocd-server
+        - name: drone
           port: 80
-    - kind: Rule
-      match: Host(`argocd.lan`) && Headers(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - name: argo-cd-argocd-server
-          port: 80
-          scheme: h2c
   tls:
     certResolver: default
     options: {}
