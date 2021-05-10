@@ -1,16 +1,21 @@
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
   namespace: kube-system
 spec:
   releaseName: metallb
-  helmVersion: v3
+  targetNamespace: kube-system
   chart:
-    repository: https://charts.bitnami.com/bitnami
-    name: metallb
-    version: 1.0.1
+    spec:
+      chart: metallb
+      version: 1.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 5m
   values:
     configInline:
       address-pools:
@@ -20,16 +25,6 @@ spec:
         - 192.168.1.204-192.168.1.304
     rbac:
       create: true
-    prometheus:
-      enabled: false
-      serviceMonitor:
-        enabled: false
-        jobLabel: "app.kubernetes.io/name"
-        interval: ""
-        metricRelabelings: []
-        relabelings: []
-      prometheusRule:
-        enabled: false
     controller:
       image:
         registry: docker.io
