@@ -2,15 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: adguard
+  name: blocky
   namespace: home
 spec:
-  releaseName: adguard
+  releaseName: blocky
   targetNamespace: home
   interval: 5m
   chart:
     spec:
-      chart: adguard-home
+      chart: blocky
       version: v3.2.1
       sourceRef:
         kind: HelmRepository
@@ -24,16 +24,16 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: adguard-ui
+  name: blocky-ui
   namespace: kube-system
 spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`adguard.lan`)
+    - match: Host(`blocky.lan`)
       kind: Rule
       services:
         - kind: Service
-          name: adguard-adguard-home
+          name: blocky
           namespace: home
-          port: 3000
+          port: 4000
