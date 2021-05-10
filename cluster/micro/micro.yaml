@@ -1,25 +1,171 @@
 ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: micro
-#   namespace: micro
-# spec:
-#   releaseName: micro
-#   targetNamespace: micro
-#   interval: 5m
-#   install:
-#     remediation:
-#       retries: 3
-#   upgrade:
-#     remediation:
-#         retries: 3
-#   chart:
-#     spec:
-#       chart: micro
-#       version: v1.2.1
-#       sourceRef:
-#         kind: HelmRepository
-#         name: micro
-#         namespace: flux-system
-#       interval: 5m
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: micro
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: store-pv
+  namespace: micro
+  labels:
+    project: micro
+spec:
+  claimRef:
+    name: store-pvc
+    namespace: micro
+  storageClassName: hcloud-volumes
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: store-pvc
+  namespace: micro
+  labels:
+    project: micro
+spec:
+  storageClassName: hcloud-volumes
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: micro
+  namespace: micro
+  labels:
+    project: micro
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: micro
+  namespace: micro
+  labels:
+    project: micro
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/log
+      - services
+      - secrets
+      - namespaces
+    verbs:
+      - get
+      - create
+      - update
+      - delete
+      - list
+      - patch
+      - watch
+  - apiGroups:
+      - "apps"
+    resources:
+      - deployments
+    verbs:
+      - create
+      - update
+      - delete
+      - list
+      - patch
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - pods
+      - pods/logs
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - "networking.k8s.io"
+    resources:
+      - networkpolicy
+      - networkpolicies
+    verbs:
+      - get
+      - create
+      - update
+      - delete
+      - deletecollection
+      - list
+      - patch
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: micro
+  namespace: micro
+  labels:
+    project: micro
+subjects:
+  - kind: ServiceAccount
+    name: micro
+    namespace: micro
+roleRef:
+  kind: ClusterRole
+  name: micro
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: micro
+  namespace: micro
+  labels:
+    project: micro
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: micro
+subjects:
+  - kind: ServiceAccount
+    name: micro
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: micro
+  name: micro
+  labels:
+    project: micro
+spec:
+  template:
+    spec:
+      serviceAccountName: micro
+      containers:
+        - name: micro
+          env:
+            - name: MICRO_PROFILE
+              value: kubernetes
+            - name: MICRO_PROXY
+              value: "network.micro.svc.cluster.local:8443"
+            - name: MICRO_SERVER_IMAGE
+              value: micro/micro:latest
+          args:
+            - server
+          image: micro/micro
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: "/store"
+              name: store-mount
+      volumes:
+        - name: store-mount
+          persistentVolumeClaim:
+            claimName: store-pvc
+      restartPolicy: OnFailure
