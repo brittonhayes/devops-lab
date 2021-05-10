@@ -20,3 +20,8 @@ tasks:
     desc: Generate README
     cmds:
       - renderizer --settings ".README.yaml" templates/README.tmpl > README.md
+
+  update:
+    desc: Update resources from git sourceRef
+    cmds:
+      - flux reconcile source git flux-system
