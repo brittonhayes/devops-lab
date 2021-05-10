@@ -17,9 +17,6 @@ spec:
         name: argo
         namespace: flux-system
       interval: 5m
-  values:
-    service:
-      type: LoadBalancer
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -34,13 +31,13 @@ spec:
       match: Host(`argocd.lan`)
       priority: 10
       services:
-        - name: argocd-server
+        - name: argo-cd-argocd-server
           port: 80
     - kind: Rule
       match: Host(`argocd.lan`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
-        - name: argocd-server
+        - name: argo-cd-argocd-server
           port: 80
           scheme: h2c
   tls:
