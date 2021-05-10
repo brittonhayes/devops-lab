@@ -21,7 +21,25 @@ spec:
     annotations:
       kubernetes.io/ingress.class: traefik
     service:
-      type: LoadBalancer
+      additionalServices:
+      - enabled: true
+        nameSuffix: dns-tcp
+        type: LoadBalancer
+        port:
+          port: 53
+          name: dns-tcp
+          protocol: TCP
+          targetPort: 53
+        externalTrafficPolicy: Local
+      - enabled: true
+        nameSuffix: dns-udp
+        type: LoadBalancer
+        port:
+          port: 53
+          name: dns-udp
+          protocol: UDP
+        targetPort: 53
+        externalTrafficPolicy: Local
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
