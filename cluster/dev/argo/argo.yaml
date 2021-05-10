@@ -20,20 +20,20 @@ spec:
   values:
     service:
       type: LoadBalancer
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: argo-cd
-#   namespace: kube-system
-# spec:
-#   entryPoints:
-#     - web
-#   routes:
-#     - match: Host(`argo.lan`)
-#       kind: Rule
-#       services:
-#         - kind: Service
-#           name: argo-workflows-server
-#           namespace: dev
-#           port: 2746
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-cd
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`argo.lan`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: argo-cd-argocd-server
+          namespace: dev
+          port: 80
