@@ -1,0 +1,99 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: agones
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://agones.dev/chart/stable
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: argo
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://argoproj.github.io/argo-helm
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: bitnami
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://charts.bitnami.com/bitnami
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: drone
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://charts.drone.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: k8s-at-home
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://k8s-at-home.com/charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kubernetes-dashboard
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://kubernetes.github.io/dashboard/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: micro
+  namespace: micro
+spec:
+  interval: 5m
+  url: https://micro.github.io/helm
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: openfaas
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://openfaas.github.io/faas-netes
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: traefik
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://helm.traefik.io/traefik
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: minecraft
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://itzg.github.io/minecraft-server-charts

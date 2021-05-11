@@ -1,24 +1,24 @@
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: agones
-  namespace: games
-spec:
-  releaseName: agones
-  targetNamespace: games
-  interval: 5m
-  chart:
-    spec:
-      chart: agones
-      version: v1.14.0-rc
-      sourceRef:
-        kind: HelmRepository
-        name: agones
-        namespace: flux-system
-      interval: 5m
-  values:
-    agones:
-      gameservers:
-        namespaces:
-          - games
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: agones
+#   namespace: games
+# spec:
+#   releaseName: agones
+#   targetNamespace: games
+#   interval: 5m
+#   chart:
+#     spec:
+#       chart: agones
+#       version: v1.14.0-rc
+#       sourceRef:
+#         kind: HelmRepository
+#         name: agones
+#         namespace: flux-system
+#       interval: 5m
+#   values:
+#     agones:
+#       gameservers:
+#         namespaces:
+#           - games
