@@ -18,8 +18,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    service:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
     ingress:
       enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
