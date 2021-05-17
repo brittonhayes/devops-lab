@@ -34,7 +34,7 @@ spec:
       match: Host(`home-assistant.lan`)
       services:
         - name: home-assistant
-          port: 80
+          port: 8123
   tls:
     certResolver: default
     options: {}
