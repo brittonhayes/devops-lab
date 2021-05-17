@@ -1,0 +1,40 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: home
+spec:
+  releaseName: home-assistant
+  targetNamespace: home
+  interval: 5m
+  chart:
+    spec:
+      chart: home-assistant
+      version: v8.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  values:
+    ingress:
+      enabled: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`home-assistant.lan`)
+      services:
+        - name: home-assistant
+          port: 80
+  tls:
+    certResolver: default
+    options: {}
