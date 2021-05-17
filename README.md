@@ -22,14 +22,12 @@ cluster/:
 
 ```text
 |-- /cluster
-|---- /default      :   A catch-all namespace
-|---- /dev          :   Development tools
+|---- /dev          :   Development and deployment tools
 |---- /home         :   Home applications and services
 |---- /games        :   Dedicated game servers
-|---- /monitoring   :   Logging, monitoring, and dashboards
 |---- /kube-system  :   Internal system services
 |---- /flux-system  :   GitOps/Flux operator and services
-|---- /openfaas     :   Open faas serverless resources and functions
+|---- /openfaas     :   Open faas serverless resources
 ```
 
 ## The Infrastructure

@@ -29,11 +29,11 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: drone
+  name: spinnaker
   namespace: flux-system
 spec:
   interval: 5m
-  url: https://charts.drone.io
+  url: https://helmcharts.opsmx.com
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
