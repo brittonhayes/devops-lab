@@ -22,7 +22,7 @@ spec:
       - name: default
         protocol: layer2
         addresses:
-        - 192.168.1.204-192.168.1.252
+        - 192.168.30.100-192.168.30.252
     rbac:
       create: true
     controller:
