@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: kube-system
 resources:
   - namespace.yaml
-  - ./metallb/metallb.yaml
   - ./traefik/traefik.yaml

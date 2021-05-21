@@ -3,10 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
-  namespace: kube-system
+  namespace: metallb-system
 spec:
   releaseName: metallb
-  targetNamespace: kube-system
+  targetNamespace: metallb-system
   chart:
     spec:
       chart: metallb
