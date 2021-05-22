@@ -21,6 +21,9 @@ spec:
     service:
       type: LoadBalancer
       externalTrafficPolicy: Local
+    persistence:
+      config:
+        enabled: true
     ingress:
       enabled: true
       ingressClassName: "traefik"

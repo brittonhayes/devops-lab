@@ -3,10 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: minecraft
-  namespace: games
+  namespace: minecraft
 spec:
   releaseName: minecraft
-  targetNamespace: games
+  targetNamespace: minecraft
   interval: 5m
   chart:
     spec:
@@ -19,6 +19,18 @@ spec:
       interval: 5m
   values:
     minecraftServer:
-      difficulty: hard
+      difficulty: easy
       eula: true
       serviceType: LoadBalancer
+    persistence:
+      annotations: {}
+      dataDir:
+        # Set this to false if you don't care to persist state between restarts.
+        enabled: true
+        # existingClaim: nil
+        Size: 1Gi
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minecraft
