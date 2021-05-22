@@ -1,0 +1,96 @@
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: sandstorm
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+#   labels:
+#     app: sandstorm
+#     version: v0
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: sandstorm
+#       version: v0
+#   template:
+#     metadata:
+#       labels:
+#         app: sandstorm
+#         version: v0
+#     spec:
+#       containers:
+#       - name: sandstorm
+#         image: knobby/sandstorm
+#         resources:
+#           limits:
+#             cpu: 1
+#             memory: 4Gi
+#         volumeMounts:
+#         - name: sandstorm-store
+#           mountPath: /insurgency
+#         ports:
+#         - containerPort: 27102
+#           name: insurg-main-udp
+#           protocol: UDP
+#         - containerPort: 27131
+#           name: insurg-query
+#           protocol: UDP
+#         imagePullPolicy: Always
+#       volumes:
+#       - name: sandstorm-store
+#         persistentVolumeClaim:
+#           claimName: sandstorm
+# ---
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   selector:
+#     matchLabels:
+#       name: "sandstorm"
+#   resources:
+#     requests:
+#       storage: 100Gi
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+#   labels:
+#     name: sandstorm
+# spec:
+#   capacity:
+#     storage: 100Gi
+#   accessModes:
+#     - ReadWriteOnce
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+#   labels:
+#     app: sandstorm
+#     kubernetes.io/name: "sandstorm"
+# spec:
+#   selector:
+#     app: sandstorm
+#   ports:
+#   - name: insurg-main-udp
+#     port: 27102
+#     protocol: UDP
+#   - name: insurg-query
+#     port: 27131
+#     protocol: UDP
+#   type: LoadBalancer
