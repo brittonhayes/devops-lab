@@ -11,29 +11,29 @@
 #   namespace: sandstorm
 #   labels:
 #     app: sandstorm
-#     version: v0
+#     version: v1
 # spec:
 #   replicas: 1
 #   selector:
 #     matchLabels:
 #       app: sandstorm
-#       version: v0
+#       version: v1
 #   template:
 #     metadata:
 #       labels:
 #         app: sandstorm
-#         version: v0
+#         version: v1
 #     spec:
 #       containers:
 #       - name: sandstorm
-#         image: knobby/sandstorm
+#         image: gameservermanagers/linuxgsm-docker
 #         resources:
 #           limits:
 #             cpu: 1
 #             memory: 4Gi
 #         volumeMounts:
-#         - name: sandstorm-store
-#           mountPath: /insurgency
+#         - name: sandstorm
+#           mountPath: /dev/longhorn/sandstorm
 #         ports:
 #         - containerPort: 27102
 #           name: insurg-main-udp
@@ -43,7 +43,7 @@
 #           protocol: UDP
 #         imagePullPolicy: Always
 #       volumes:
-#       - name: sandstorm-store
+#       - name: sandstorm
 #         persistentVolumeClaim:
 #           claimName: sandstorm
 # ---
@@ -58,22 +58,11 @@
 #   selector:
 #     matchLabels:
 #       name: "sandstorm"
+#   volumeName: sandstorm
+#   storageClassName: longhorn-static
 #   resources:
 #     requests:
-#       storage: 100Gi
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: sandstorm
-#   namespace: sandstorm
-#   labels:
-#     name: sandstorm
-# spec:
-#   capacity:
-#     storage: 100Gi
-#   accessModes:
-#     - ReadWriteOnce
+#       storage: 30Gi
 # ---
 # apiVersion: v1
 # kind: Service
