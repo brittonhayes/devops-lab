@@ -1,24 +1,24 @@
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: sandstorm
-  namespace: sandstorm
-spec:
-  accessModes:
-    - ReadWriteOnce
-  selector:
-    matchLabels:
-      name: "sandstorm"
-  volumeName: sandstorm
-  volumeMode: Filesystem
-  storageClassName: longhorn-static
-  resources:
-    requests:
-      storage: 100Gi
-status:
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 100Gi
-  phase: Bound
+# ---
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   selector:
+#     matchLabels:
+#       name: "sandstorm"
+#   volumeName: sandstorm
+#   volumeMode: Filesystem
+#   storageClassName: longhorn-static
+#   resources:
+#     requests:
+#       storage: 100Gi
+# status:
+#   accessModes:
+#     - ReadWriteOnce
+#   capacity:
+#     storage: 100Gi
+#   phase: Bound

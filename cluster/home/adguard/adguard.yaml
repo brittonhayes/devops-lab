@@ -7,7 +7,7 @@ metadata:
 spec:
   releaseName: adguard
   targetNamespace: home
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: adguard-home
@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: k8s-at-home
         namespace: flux-system
-      interval: 5m
+      interval: 15m
   values:
     annotations:
       kubernetes.io/ingress.class: traefik

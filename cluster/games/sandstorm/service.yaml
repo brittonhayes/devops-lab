@@ -1,20 +1,20 @@
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sandstorm
-  namespace: sandstorm
-  labels:
-    app: sandstorm
-    kubernetes.io/name: "sandstorm"
-spec:
-  selector:
-    app: sandstorm
-  ports:
-  - name: insurg-main-udp
-    port: 27102
-    protocol: UDP
-  - name: insurg-query
-    port: 27131
-    protocol: UDP
-  type: LoadBalancer
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+#   labels:
+#     app: sandstorm
+#     kubernetes.io/name: "sandstorm"
+# spec:
+#   selector:
+#     app: sandstorm
+#   ports:
+#   - name: insurg-main-udp
+#     port: 27102
+#     protocol: UDP
+#   - name: insurg-query
+#     port: 27131
+#     protocol: UDP
+#   type: LoadBalancer

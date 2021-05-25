@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: dev
 resources:
   - namespace.yaml
-  - ./spinnaker/spinnaker.yaml
+  # - ./spinnaker/spinnaker.yaml

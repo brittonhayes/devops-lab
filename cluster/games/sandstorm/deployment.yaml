@@ -1,43 +1,43 @@
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: sandstorm
-  namespace: sandstorm
-  labels:
-    app: sandstorm
-    version: v1
-spec:
-  replicas: 0
-  selector:
-    matchLabels:
-      app: sandstorm
-      version: v1
-  template:
-    metadata:
-      labels:
-        app: sandstorm
-        version: v1
-    spec:
-      containers:
-      - name: sandstorm
-        image: brittonhayes/sandstorm:latest
-        resources:
-          limits:
-            cpu: 1
-            memory: 4Gi
-        volumeMounts:
-        - name: sandstorm
-          mountPath: /dev/longhorn/sandstorm
-        ports:
-        - containerPort: 27102
-          name: insurg-main-udp
-          protocol: UDP
-        - containerPort: 27131
-          name: insurg-query
-          protocol: UDP
-        imagePullPolicy: Always
-      volumes:
-      - name: sandstorm
-        persistentVolumeClaim:
-          claimName: sandstorm
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: sandstorm
+#   namespace: sandstorm
+#   labels:
+#     app: sandstorm
+#     version: v1
+# spec:
+#   replicas: 0
+#   selector:
+#     matchLabels:
+#       app: sandstorm
+#       version: v1
+#   template:
+#     metadata:
+#       labels:
+#         app: sandstorm
+#         version: v1
+#     spec:
+#       containers:
+#       - name: sandstorm
+#         image: brittonhayes/sandstorm:latest
+#         resources:
+#           limits:
+#             cpu: 1
+#             memory: 4Gi
+#         volumeMounts:
+#         - name: sandstorm
+#           mountPath: /dev/longhorn/sandstorm
+#         ports:
+#         - containerPort: 27102
+#           name: insurg-main-udp
+#           protocol: UDP
+#         - containerPort: 27131
+#           name: insurg-query
+#           protocol: UDP
+#         imagePullPolicy: Always
+#       volumes:
+#       - name: sandstorm
+#         persistentVolumeClaim:
+#           claimName: sandstorm
