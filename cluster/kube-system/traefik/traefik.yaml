@@ -31,6 +31,9 @@ spec:
       - games
       - home
       - monitoring
+      - dev
+      - flux-system
+      - longhorn-system
     ingressEndpoint:
       useDefaultPublishedService: "true"
     image:

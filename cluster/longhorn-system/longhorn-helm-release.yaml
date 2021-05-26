@@ -16,3 +16,18 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: flux-system
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn-ui
+  namespace: kube-system
+spec:
+  routes:
+    - match: Host(`longhorn.lan`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: longhorn-frontend
+          namespace: kube-system
+          port: 80
