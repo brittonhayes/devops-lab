@@ -24,6 +24,9 @@ spec:
     persistence:
       config:
         enabled: true
+        storageClass: "longhorn-static"
+        accessMode: ReadWriteOnce
+        size: "10Gi"
     ingress:
       enabled: true
       ingressClassName: "traefik"
