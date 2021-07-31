@@ -5,3 +5,4 @@ namespace: kube-system
 resources:
   - namespace.yaml
   - ./traefik/traefik.yaml
+  - ./sealed-secrets/sealed-secrets.yaml
