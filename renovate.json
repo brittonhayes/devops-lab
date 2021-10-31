@@ -1,4 +1,7 @@
 {
+  "kubernetes": {
+    "fileMatch": ["cluster/.+\\.yaml$"]
+  },
   "extends": [
     "config:base"
   ]
