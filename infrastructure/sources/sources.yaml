@@ -113,3 +113,11 @@ metadata:
 spec:
   interval: 24h0m0s
   url: https://bitnami-labs.github.io/sealed-secrets
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: hashicorp
+spec:
+  interval: 24h0m0s
+  url: https://helm.releases.hashicorp.com
