@@ -17,3 +17,21 @@ spec:
         name: hashicorp
         namespace: flux-system
       interval: 24h
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`home-assistant.lan`)
+      services:
+        - name: home-assistant
+          port: 8123
+  tls:
+    certResolver: default
+    options: {}
