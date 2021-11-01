@@ -18,5 +18,6 @@ spec:
         namespace: flux-system
       interval: 24h
   values:
-    global:
-      storageClass: longhorn-static
+    persistence:
+      enabled: true
+    storageClass: longhorn-static

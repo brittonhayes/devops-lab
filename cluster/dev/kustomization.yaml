@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - postgres/namespace.yaml
 - postgres/helm-release.yaml
-# - waypoint/namespace.yaml
-# - waypoint/helm-release.yaml
+- waypoint/namespace.yaml
+- kubeapps/namespace.yaml
+- kubeapps/helm-release.yaml
