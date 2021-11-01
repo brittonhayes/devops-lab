@@ -20,7 +20,11 @@ spec:
   values:
     ingress:
       enabled: true
+      tls: true
+      hostname: kubeapps.lan
+      selfSigned: true
       annotations:
+        cert-manager.io/cluster-issuer: selfsigned-issuer
         kubernetes.io/ingress.class: traefik
         kubernetes.io/tls-acme: "true"
       hosts:
@@ -45,3 +49,7 @@ spec:
           name: kubeapps
           namespace: kubeapps
           port: 80
+  tls:
+      - hosts:
+            - kubeapps.lan
+        secretName: kubeapps-local-cert-tls

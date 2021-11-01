@@ -6,3 +6,4 @@ resources:
   - namespace.yaml
   - ./traefik/traefik.yaml
   - ./sealed-secrets/sealed-secrets.yaml
+  - ./cert-manager/helm-release.yaml
