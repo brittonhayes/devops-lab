@@ -4,6 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
